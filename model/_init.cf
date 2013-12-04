@@ -32,7 +32,7 @@ end
 
 implement LogAgent using rsyslogLogAgent when host.os is "linux"
 
-implementation rsyslogLogAgent:
+implementation rsyslogLogAgent for LogAgent:
     servers = logging::LogCollector
     conf_file = std::ConfigFile(host = host, path = "/etc/rsyslog.conf", content =
         template("logging/rsyslog.conf.tmpl"))
