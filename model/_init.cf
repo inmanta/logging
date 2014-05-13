@@ -35,7 +35,7 @@ implement LogAgent using rsyslogLogAgent when host.os is "linux"
 implementation rsyslogLogAgent for LogAgent:
     servers = logging::LogCollector
     conf_file = std::ConfigFile(host = host, path = "/etc/rsyslog.conf", content =
-        template("logging/rsyslog.conf.tmpl"))
+        std::template("logging/rsyslog.conf.tmpl"))
     pkg = std::Package(host = host, name = "rsyslog", state = "installed")
     svc = std::Service(host = host, name = "rsyslog", state = "running", onboot = true)
 

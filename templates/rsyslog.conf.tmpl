@@ -27,7 +27,7 @@ cron.*                                                  /var/log/cron
 uucp,news.crit                                          /var/log/spooler
 local7.*                                                /var/log/boot.log
 
-{% for server in servers %}*.*   @@{{ server.host.ip | cm("logserver", loop.index0, "net ref") }}:5514
+{% for server in servers %}*.*   @@{{ server.host.ip | std.cm("logserver", loop.index0, "net ref") }}:5514
 {% endfor %}
 
 # use the local RuleSet as default
