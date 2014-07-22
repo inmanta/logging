@@ -30,7 +30,7 @@ entity LogCollector extends ip::services::Server:
     """
 end
 
-implement LogAgent using rsyslogLogAgent when host.os is "linux"
+implement LogAgent using rsyslogLogAgent when std::familyof(host.os, "linux")
 
 implementation rsyslogLogAgent for LogAgent:
     servers = logging::LogCollector
