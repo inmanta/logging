@@ -1,7 +1,8 @@
-author: Bart Vanbrabant <bart.vanbrabant@cs.kuleuven.be>
+author: Bart Vanbrabant <bart@impera.io>
 license: Apache 2.0
 name: logging
-requires: {ip: 'git@github.com:bartv/imp-ip, ">= 0.1"', std: 'git@github.com:bartv/imp-std,
-    ">= 0.3"'}
-source: git@github.com:bartv/imp-logging
-version: 0.2.1
+source: git@git.impera.io:modules/logging
+version: 0.3b1
+requires:
+    ip: git@github.com:impera-io/ip, ">= 0.1"
+    std: git@github.com:impera-io/std, ">= 0.3"
