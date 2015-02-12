@@ -27,3 +27,5 @@ end
 
 implement LogFile using std::none
 
+std::Host host [1] -- [0:] LogFile log_files
+
