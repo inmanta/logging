@@ -13,43 +13,17 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 
-    Contect: bart@impera.io
+    Contact: bart@impera.io
 """
 
-entity LogAgent extends ip::services::Server:
+entity LogFile:
     """
-        An agent that is used to accept logs and store them localy and/or
-        send them to a collector
+        Models a log file in the configuration model
     """
+    string path
+    string type=""
+    string tag=""
 end
 
-entity LogCollector extends ip::services::Server:
-    """
-        A collector that accepts logs
-    """
-end
-
-implement LogAgent using rsyslogLogAgent when std::familyof(host.os, "linux")
-
-implementation rsyslogLogAgent for LogAgent:
-    servers = logging::LogCollector
-    conf_file = std::ConfigFile(host = host, path = "/etc/rsyslog.conf", content =
-        std::template("logging/rsyslog.conf.tmpl"))
-    pkg = std::Package(host = host, name = "rsyslog", state = "installed")
-    svc = std::Service(host = host, name = "rsyslog", state = "running", onboot = true)
-
-    svc.requires = [pkg, conf_file]
-    conf_file.requires = pkg
-end
-
-implement LogCollector using std::none
-
-syslog_server_range = ip::Port(low = 514)
-s_agent = ip::DstService(proto = "tcp", dst_range = syslog_server_range)
-
-logcollector_server_range = ip::Port(low = 5514)
-s_server = ip::DstService(proto = "tcp", dst_range = logcollector_server_range)
-
-typedef Agent as LogAgent(services = logging::s_agent)
-typedef Collector as LogCollector(services = logging::s_server)
+implement LogFile using std::none
 

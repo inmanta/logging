@@ -4,5 +4,4 @@ name: logging
 source: git@git.impera.io:modules/logging
 version: 0.3b1
 requires:
-    ip: git@github.com:impera-io/ip, ">= 0.1"
     std: git@github.com:impera-io/std, ">= 0.3"
