@@ -29,3 +29,18 @@ implement LogFile using std::none
 
 std::Host host [1] -- [0:] LogFile log_files
 
+
+entity LogDir:
+    """
+        Models a log file in the configuration model
+    """
+    string path
+    string matches = ".*\.log"
+    string type=""
+    string tag=""
+end
+
+implement LogDir using std::none
+
+std::Host host [1] -- [0:] LogDir log_dirs
+
