@@ -34,8 +34,10 @@ entity LogDir:
     """
         Models a log file in the configuration model
     """
+    string name
     string path
     string matches = ".*\.log"
+    string[] priority
     string type=""
     string tag=""
 end
