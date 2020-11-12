@@ -27,8 +27,7 @@ end
 
 implement LogFile using std::none
 
-std::Host host [1] -- [0:] LogFile log_files
-
+std::Host.log_files [0:] -- LogFile.host [1]
 
 entity LogDir:
     """
@@ -44,5 +43,4 @@ end
 
 implement LogDir using std::none
 
-std::Host host [1] -- [0:] LogDir log_dirs
-
+std::Host.log_dirs [0:] -- LogDir.host [1]
